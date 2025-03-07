@@ -36,10 +36,10 @@
                     <img src="storage/img/hp/profile.png" style="height:100px">
                 </div>
                 <div class="sns-icons prof">
-                    <a class="sns-icon" href="">
+                    <a class="sns-icon" href="https://x.com/KuziranoAika">
                         <img src="storage/img/hp/btn_X.png" style="height:70px">
                     </a>
-                    <a class="sns-icon" href="">
+                    <a class="sns-icon" href="https://www.youtube.com/@aika_VT">
                         <img src="storage/img/hp/btn_YouTube.png" style="height:70px">
                     </a>
                     <a class="sns-icon" href="">
@@ -51,7 +51,7 @@
             <div id="introduction">
                 <div id="introduction-content">
                     <p><strong>なまえ</strong>：鯨野アイカ Kuzirano Aika</p>
-                    <p><strong>誕生日</strong>：00月00日</p>
+                    <p><strong>誕生日</strong>：９月４日</p>
                     <p><strong>性　格</strong>：表情豊か、いたずら好き<br>
                         　　　　よく笑う、行動的</p>
                     <p><strong>好きなもの</strong>：ホロライブのみなさん<br>
@@ -66,15 +66,15 @@
             </div>
         </div>
 
-        <!-- 歌ってみた配信 -->
+        <!-- 最新の配信 -->
         <div class="index" id="delivery">
             <div class="pop-title">
                 <img src="storage/img/hp/delivery.png" style="height:50px">
             </div>
             <div class="movie">
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/qUuElC8jpHc?si=TGorsIl9jwNgQuED" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/KuRi10a5klQ?si=rQrxAYrB8wZaSHLq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <iframe width="300" height="200" src="https://www.youtube.com/embed/8Dz5ne5xKwU?si=DdMkVLtreBsYim-m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/FmpMa82mmpU?si=ltLx0sfYmGcrsZDB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/Pr0hUkqgQyM?si=-gJN1Wm0YBSdEW1Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="300" height="200" src="https://www.youtube.com/embed/RsAow8Rh-AA?si=O_6xxDMqkLX7rrwj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -107,12 +107,18 @@
         <div class="index" id="gallery">
             <img src="storage/img/hp/gallery.png" style="height:120px">
             <div class="gallery-image">
-                <img src="storage/img/gallery/seiunsky1.png">
-                <img src="storage/img/gallery/talent2.png">
-                <img src="storage/img/gallery/top2.jpg">
-                <img src="storage/img/gallery/2450304-5.output.png">
-                <img src="storage/img/gallery/2450304-6.output.png">
-                <img src="storage/img/gallery/2450304-7.output.png">
+                <img src="storage/img/gallery/gallery_1.png">
+                <img src="storage/img/gallery/gallery_2.png">
+                <img src="storage/img/gallery/gallery_3.png">
+                <img src="storage/img/gallery/gallery_4.png">
+                <img src="storage/img/gallery/gallery_5.png">
+                <img src="storage/img/gallery/gallery_6.png">
+                <img src="storage/img/gallery/gallery_7.png">
+                <img src="storage/img/gallery/gallery_8.png">
+                <img src="storage/img/gallery/gallery_9.png">
+                <img src="storage/img/gallery/gallery_10.png">
+                <img src="storage/img/gallery/gallery_11.png">
+                <img src="storage/img/gallery/gallery_12.png">
             </div>
         </div>
 
@@ -120,12 +126,12 @@
         <div class="index" id="goods">
             <img src="storage/img/hp/goods.png" style="height:120px">
             <div class="goods-image">
-                <img src="storage/img/gallery/2450304-2.output.png" style="height:200px">
+                <img src="storage/img/gallery/gallery_1.png" style="height:200px">
                 <img src="storage/img/gallery/2450304-3.output.png" style="height:200px">
                 <img src="storage/img/gallery/2450304-4.output.png" style="height:200px">
                 <img src="storage/img/gallery/2450304-5.output.png" style="height:200px">
             </div>
-            <a class="button-link" href="#">
+            <a class="button-link" href="https://hermestage.stores.jp/">
                 <img src="storage/img/hp/btn_goodsbtn.png" style="height:50px">
             </a>
         </div>
@@ -187,11 +193,11 @@
                 </div>
                 <div class="guide-contents">
                     <div class="guide-title">
-                        <p>■R15、18、準ずるものを公に見える場に<br>　投稿するのは禁止です。</p>
+                        <p>■R15、18、準ずるものは“控えめに”投稿をお願いいたします。</p>
                     </div>
                     <div class="guide-content">
-                        使用は自由ですが、<br>制作した後はファンアートタグや鯨野アイカの
-                        名前は使わずにご投稿ください。
+                        ファンアートタグを付けての投稿、<br>
+                        鯨野アイカという名前を入れての投稿はご遠慮くださいませ。
                     </div>
                 </div>
                 <div class="guide-contents">
@@ -212,13 +218,13 @@
         <!-- フッター -->
         <div class="index" id="footer">
             <div class="sns-icons">
-                <a class="sns-icon" href="">
+                <a class="sns-icon" href="https://hermestage.stores.jp/">
                     <img src="storage/img/hp/btn_shop.png" style="height:70px">
                 </a>
-                <a class="sns-icon" href="">
+                <a class="sns-icon" href="https://x.com/KuziranoAika">
                     <img src="storage/img/hp/btn_X.png" style="height:70px">
                 </a>
-                <a class="sns-icon" href="">
+                <a class="sns-icon" href="https://www.youtube.com/@aika_VT">
                     <img src="storage/img/hp/btn_YouTube.png" style="height:70px">
                 </a>
                 <a class="sns-icon" href="">
