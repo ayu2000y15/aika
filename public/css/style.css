@@ -865,5 +865,10 @@ body {
     .contact-contents{
         max-width: 90%;
     }
+
+    #introduction-content {
+        font-size: 1rem;
+        text-align: left;
+    }
 }
 
