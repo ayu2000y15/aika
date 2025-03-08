@@ -16,6 +16,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     display: none;
+    z-index: 9999;
 }
 
 .back-to-top:hover {
@@ -277,9 +278,8 @@
 }
 
 .goods-image img {
-    margin-right: 2rem;
-    height: 200px;
-
+    margin-left: 2rem;
+    height: 350px;
 }
 
 .goods-image a{
@@ -546,7 +546,7 @@
     padding: 1rem;
     text-align: left;
     display: inline-block;
-    width: 100%;
+    width: 80%;
     max-width: 450px;
     margin: 0;
     vertical-align: top;
@@ -717,6 +717,10 @@ body {
     #header {
     flex-direction: column;
     }
+
+    #profile {
+        margin-top: 3rem;
+    }
     .prof-header {
         flex-direction: column;
         gap: 20px;
@@ -851,6 +855,14 @@ body {
 
     .gallery-image img{
         height: 300px;
+    }
+
+    .goods-image img{
+        height: 200px;
+    }
+
+    .contact-contents{
+        max-width: 90%;
     }
 }
 
