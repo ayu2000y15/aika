@@ -870,5 +870,9 @@ body {
         font-size: 1rem;
         text-align: left;
     }
+
+    #introduction-content p {
+        padding: 0;
+    }
 }
 
