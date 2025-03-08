@@ -13,6 +13,7 @@ class ContactSendmail extends Mailable
 
     public $referenceNumber;
     public $contactCategoryName;
+    public $companyName;
     public $name;
     public $age;
     public $mail;
@@ -45,6 +46,7 @@ class ContactSendmail extends Mailable
 
         $this->referenceNumber = $contact['REFERENCE_NUMBER'];
         $this->contactCategoryName = $contact['CONTACT_CATEGORY_NAME'];
+        $this->companyName = $contact['COMPANY_NAME'];
         $this->mail = $contact['MAIL'];
         $this->name = $contact['NAME'];
         $this->age = $contact['AGE'];
@@ -69,6 +71,7 @@ class ContactSendmail extends Mailable
             ->text($this->root)
             ->with([
                 'contactCategoryName' => $this->contactCategoryName,
+                'companyName' => $this->companyName,
                 'name' => $this->name,
                 'age' => $this->age,
                 'email' => $this->mail,
@@ -83,6 +86,7 @@ class ContactSendmail extends Mailable
         ->text($this->root)
         ->with([
             'contactCategoryName' => $this->contactCategoryName,
+            'companyName' => $this->companyName,
             'name' => $this->name,
             'age' => $this->age,
             'email' => $this->mail,

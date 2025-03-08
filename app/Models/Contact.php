@@ -13,8 +13,9 @@ class Contact extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'REFERENCE_NUMBER', 'CONTACT_CATEGORY_ID', 'NAME',
-        'AGE', 'MAIL', 'TEL',
+        'REFERENCE_NUMBER', 'CONTACT_CATEGORY_ID',
+        'COMPANY_NAME',
+        'NAME','AGE', 'MAIL', 'TEL',
         'SUBJECT', 'CONTENT', 'MEMO'
     ];
 

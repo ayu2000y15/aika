@@ -17,6 +17,8 @@
     }
 </style>
 <body>
+    <script src="{{ asset('js/script.js') }}"></script>
+
     @yield('content')
 </body>
 </html>

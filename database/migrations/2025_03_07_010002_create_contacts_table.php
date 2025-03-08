@@ -12,6 +12,7 @@ class CreateContactsTable extends Migration
             $table->integer('CONTACT_ID')->primary()->autoIncrement()->comment('問い合わせID');
             $table->char('REFERENCE_NUMBER', 8)->nullable()->unique()->comment('問い合わせ番号（ユーザー用）');
             $table->integer('CONTACT_CATEGORY_ID')->comment('問い合わせカテゴリーID(外部キー)');
+            $table->string('COMPANY_NAME' , 500)->nullable()->comment('会社名');
             $table->string('NAME', 200)->nullable()->comment('氏名');
             $table->integer('AGE')->nullable()->comment('年齢');
             $table->string('MAIL', 200)->nullable()->comment('メールアドレス');
