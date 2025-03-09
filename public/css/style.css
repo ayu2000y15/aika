@@ -359,8 +359,8 @@
     color: white;
     line-height: 1;
     position: relative;
-    width: 0.8em;
-    height: 0.8em;
+    width: 0.6em;
+    height: 0.6em;
     transform: translateX(0) rotate(-135deg);
 }
 
@@ -391,8 +391,8 @@
     color: white;
     line-height: 1;
     position: relative;
-    width: 0.8em;
-    height: 0.8em;
+    width: 0.6em;
+    height: 0.6em;
     transform: translateX(0) rotate(45deg);
 }
 
@@ -954,38 +954,5 @@ body {
         padding: 0;
     }
 
-    .modal-nav button {
-        width: 40px;
-        height: 40px;
-    }
-
-    .modal-nav button.prev-btn {
-        margin-left: 10px;
-    }
-
-    .modal-nav button.next-btn {
-        margin-right: 10px;
-    }
-
-    .gallery-nav button {
-        width: 40px;
-        height: 40px;
-    }
-
-    .dli-chevron-round-left,
-    .dli-chevron-round-right {
-        width: 0.8em;
-        height: 0.8em;
-    }
-
-    .dli-chevron-round-left::before,
-    .dli-chevron-round-right::before {
-        height: 0.2em;
-    }
-
-    .dli-chevron-round-left::after,
-    .dli-chevron-round-right::after {
-        width: 0.2em;
-    }
 }
 
