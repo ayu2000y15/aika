@@ -362,7 +362,6 @@
     width: 0.8em;
     height: 0.8em;
     transform: translateX(0) rotate(-135deg);
-    z-index: 9999;
 }
 
 .dli-chevron-round-left::before, .dli-chevron-round-left::after {
@@ -395,7 +394,6 @@
     width: 0.8em;
     height: 0.8em;
     transform: translateX(0) rotate(45deg);
-    z-index: 9999;
 }
 
 .dli-chevron-round-right::before, .dli-chevron-round-right::after {
@@ -453,7 +451,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0;
+    padding: 0 10px;
     box-sizing: border-box;
     z-index: 1002;
     pointer-events: none;
@@ -472,7 +470,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 20px;
+    margin: 0 5px;
     pointer-events: auto;
 }
 
@@ -483,11 +481,11 @@
 
 /* 左右の矢印ボタンを個別にスタイリング */
 .modal-nav button.prev-btn {
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .modal-nav button.next-btn {
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
   /* モーダル内の画像カウンター */
@@ -526,6 +524,7 @@
     justify-content: center;
     margin-top: 1rem;
     gap: 1rem;
+    padding: 0 10px;
 }
 
 .gallery-nav button {
@@ -538,6 +537,9 @@
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-nav button:hover {
@@ -838,7 +840,7 @@ body {
     }
 }
 
-  /* 7. 500px以下の画面幅に対応するメディアクエリを追加 */
+  /* 7. 600px以下の画面幅に対応するメディアクエリを追加 */
 @media (max-width: 600px) {
     .movie {
         display: flex;
@@ -956,28 +958,36 @@ body {
         padding: 0;
     }
 
+    .modal-nav {
+        padding: 0 5px;
+    }
+
     .modal-nav button {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
     }
 
     .modal-nav button.prev-btn {
-        margin-left: 10px;
+        margin-left: 5px;
     }
 
     .modal-nav button.next-btn {
-        margin-right: 10px;
+        margin-right: 5px;
+    }
+
+    .gallery-nav {
+        padding: 0 5px;
     }
 
     .gallery-nav button {
-        width: 50px;
-        height: 50px;
+        width: 36px;
+        height: 36px;
     }
 
     .dli-chevron-round-left,
     .dli-chevron-round-right {
-        width: 0.8em;
-        height: 0.8em;
+        width: 0.9em;
+        height: 0.9em;
     }
 
     .dli-chevron-round-left::before,
