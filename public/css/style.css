@@ -482,11 +482,11 @@
 
 /* 左右の矢印ボタンを個別にスタイリング */
 .modal-nav button.prev-btn {
-    margin-left: 30px;
+    margin-left: 10px;
 }
 
 .modal-nav button.next-btn {
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
   /* モーダル内の画像カウンター */
@@ -536,7 +536,13 @@
     height: 40px;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    padding: 0;
+    pointer-events: auto;
 }
 
 .gallery-nav button:hover {
