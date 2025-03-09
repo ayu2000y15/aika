@@ -2,31 +2,31 @@
 @section('title', '鯨野アイカ - 公式ホームページ')
 
 @section('content')
-
+<style>
+    body {
+        background-image: url("{{ asset($backImg->FILE_PATH . $backImg->FILE_NAME) }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+    }
+</style>
     <div class="container">
         <!-- メニュー -->
-        <a href="#top" class="back-to-top">↑</a>
+        <a href="#top" class="back-to-top"><span class="dli-arrow-up"></span></a>
         <div id="header">
             <div id="avatar">
-                <img src="storage/img/hp/aika.png" >
+                <img src="{{ asset($avatar1->FILE_PATH . $avatar1->FILE_NAME) }}" alt="{{ $avatar1->COMMENT }}">
             </div>
             <div id="menu">
                 <div id="logo">
-                    <img src="storage/img/hp/logo.png" >
+                    <img src="{{ asset($logoImg->FILE_PATH . $logoImg->FILE_NAME) }}" alt="{{ $logoImg->COMMENT }}">
                 </div>
                 <div id="top-menu">
-                    <a class="menu-btn" href="#information">
-                        <img src="storage/img/hp/topbtn_1.png" >
+                    @foreach ($menuBtnList as $menuBtn)
+                    <a class="menu-btn" href="{{ $menuBtn->SPARE1 }}">
+                        <img src="{{ asset($menuBtn->FILE_PATH . $menuBtn->FILE_NAME) }}" alt="{{ $menuBtn->COMMENT }}">
                     </a>
-                    <a class="menu-btn" href="#gallery">
-                        <img src="storage/img/hp/topbtn_2.png" >
-                    </a>
-                    <a class="menu-btn" href="#goods">
-                        <img src="storage/img/hp/topbtn_3.png" >
-                    </a>
-                    <a class="menu-btn" href="#contact">
-                        <img src="storage/img/hp/topbtn_4.png" >
-                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -35,18 +35,14 @@
         <div class="index" id="profile">
             <div class="prof-header">
                 <div class="pop-title prof">
-                    <img src="storage/img/hp/profile.png" >
+                    <img src="{{ asset($profileTitle->FILE_PATH . $profileTitle->FILE_NAME) }}" alt="{{ $profileTitle->COMMENT }}" >
                 </div>
                 <div class="sns-icons prof">
-                    <a class="sns-icon" href="https://x.com/KuziranoAika">
-                        <img src="storage/img/hp/btn_X.png" >
+                    @foreach ($snsIcons as $snsIcon)
+                    <a class="sns-icon" target="_blank" href="{{ $snsIcon->SPARE1 }}">
+                        <img src="{{ asset($snsIcon->FILE_PATH . $snsIcon->FILE_NAME) }}" alt="{{ $snsIcon->COMMENT }}" >
                     </a>
-                    <a class="sns-icon" href="https://www.youtube.com/@aika_VT">
-                        <img src="storage/img/hp/btn_YouTube.png" >
-                    </a>
-                    <a class="sns-icon" href="">
-                        <img src="storage/img/hp/btn_instagram.png">
-                    </a>
+                    @endforeach
                 </div>
             </div>
 
@@ -60,10 +56,10 @@
                         　　　　　　お笑い、ゲーム</p>
                 </div>
                 <div class="introduction-icon avatar">
-                    <img src="storage/img/hp/aika2.png">
+                    <img src="{{ asset($avatar2->FILE_PATH . $avatar2->FILE_NAME) }}" alt="{{ $avatar2->COMMENT }}" >
                 </div>
                 <div class="introduction-icon mascot">
-                    <img src="storage/img/hp/mascot.png">
+                    <img src="{{ asset($mascot->FILE_PATH . $mascot->FILE_NAME) }}" alt="{{ $mascot->COMMENT }}" >
                 </div>
             </div>
         </div>
@@ -71,67 +67,49 @@
         <!-- 最新の配信 -->
         <div class="index" id="delivery">
             <div class="pop-title delivery">
-                <img src="storage/img/hp/delivery.png">
+                <img src="{{ asset($deliveryTitle->FILE_PATH . $deliveryTitle->FILE_NAME) }}" alt="{{ $deliveryTitle->COMMENT }}" >
             </div>
             <div class="movie">
-                <iframe  src="https://www.youtube.com/embed/FmpMa82mmpU?si=ltLx0sfYmGcrsZDB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <iframe  src="https://www.youtube.com/embed/Pr0hUkqgQyM?si=-gJN1Wm0YBSdEW1Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                <iframe  src="https://www.youtube.com/embed/RsAow8Rh-AA?si=O_6xxDMqkLX7rrwj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                @foreach ($deliveryMovieList as $deliveryMovie)
+                    <iframe  src="{{ asset($deliveryMovie->FILE_NAME) }}" title="{{ $deliveryTitle->deliveryMovie }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                @endforeach
             </div>
         </div>
 
         <!-- お知らせ -->
         <div class="index" id="information">
-            <img src="storage/img/hp/information.png" >
+            <img src="{{ asset($infoTitle->FILE_PATH . $infoTitle->FILE_NAME) }}" alt="{{ $infoTitle->COMMENT }}" >
 
-            <div class="article">
-                <div class="top">
-                    <div class="date">2025.01.01</div>
-                    <div class="title">新ビジュアルを公開しました！</div>
+            @foreach ($information as $info)
+                <div class="article">
+                    <div class="top">
+                        <div class="date">{{ $info->POST_DATE }}</div>
+                        <div class="title">{{ $info->TITLE }}</div>
+                    </div>
+                    <div class="down">
+                        <div class="content">{{ $info->CONTENT }}</div>
+                    </div>
                 </div>
-                <div class="down">
-                    <div class="content">あああああ</div>
-                </div>
-            </div>
+            @endforeach
 
-            <div class="article">
-                <div class="top">
-                    <div class="date">2025.01.01</div>
-                    <div class="title">ホームページを作成しました</div>
-                </div>
-                <div class="down">
-                    <div class="content">あああああ</div>
-                </div>
-            </div>
         </div>
 
         <!-- ギャラリー -->
         <div class="index" id="gallery">
-            <img src="storage/img/hp/gallery.png" >
+            <img src="{{ asset($galleryTitle->FILE_PATH . $galleryTitle->FILE_NAME) }}" alt="{{ $galleryTitle->COMMENT }}" >
 
             <!-- ギャラリースライダー -->
             <div class="gallery-container">
                 <div class="gallery-image" id="gallery-slider">
-                    <img src="storage/img/gallery/gallery_1.png" alt="ギャラリー画像1" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_2.png" alt="ギャラリー画像2" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_3.png" alt="ギャラリー画像3" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_4.png" alt="ギャラリー画像4" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_5.png" alt="ギャラリー画像5" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_6.png" alt="ギャラリー画像6" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_7.png" alt="ギャラリー画像7" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_8.png" alt="ギャラリー画像8" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_9.jpg" alt="ギャラリー画像9" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_10.png" alt="ギャラリー画像10" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_11.png" alt="ギャラリー画像11" onclick="openModal(this)">
-                    <img src="storage/img/gallery/gallery_12.png" alt="ギャラリー画像12" onclick="openModal(this)">
-                    <img src="storage/img/hp/aika.png" alt="ギャラリー画像12" onclick="openModal(this)">
-                    <img src="storage/img/hp/aika2.png" alt="ギャラリー画像12" onclick="openModal(this)">
+                    @foreach ($galleryImgList as $galleryImg)
+                    <img src="{{ asset($galleryImg->FILE_PATH . $galleryImg->FILE_NAME) }}" alt="{{ $galleryImg->COMMENT }}" onclick="openModal(this)">
+                    @endforeach
                 </div>
 
                 <!-- ナビゲーションボタン -->
                 <div class="gallery-nav">
-                    <button onclick="scrollGallery('left')"><</button>
-                    <button onclick="scrollGallery('right')">></button>
+                    <button onclick="scrollGallery('left')"><span class="dli-chevron-round-left"></span></button>
+                    <button onclick="scrollGallery('right')"><span class="dli-chevron-round-right"></span></button>
                 </div>
             </div>
 
@@ -139,8 +117,8 @@
             <div id="imageModal" class="modal">
                 <span class="close" onclick="closeModal()">&times;</span>
                 <div class="modal-nav">
-                    <button class="prev-btn" onclick="changeModalImage(-1)"></button>
-                    <button class="next-btn" onclick="changeModalImage(1)"></button>
+                    <button class="prev-btn" onclick="changeModalImage(-1)"><span class="dli-chevron-round-left"></span></button>
+                    <button class="next-btn" onclick="changeModalImage(1)"><span class="dli-chevron-round-right"></span></button>
                 </div>
                 <img class="modal-content" id="modalImage">
                 <div class="modal-counter" id="imageCounter"></div>
@@ -149,23 +127,22 @@
 
         <!-- グッズ -->
         <div class="index" id="goods">
-            <img src="storage/img/hp/goods.png">
+            <img src="{{ asset($goodsTitle->FILE_PATH . $goodsTitle->FILE_NAME) }}" alt="{{ $goodsTitle->COMMENT }}" >
             <div class="goods-image">
-                <a href="https://hermestage.stores.jp/items/67750df36005372b9a3d87da">
-                    <img src="storage/img/shop/aika_shop1.png">
+                @foreach ($goodsImgList as $goodsImg)
+                <a target="_blank" href="{{ $goodsImg->SPARE1 }}">
+                    <img src="{{ asset($goodsImg->FILE_PATH . $goodsImg->FILE_NAME) }}" alt="{{ $goodsImg->COMMENT }}">
                 </a>
-                <a href="https://hermestage.stores.jp/items/6749ad283631db04a76157a5">
-                    <img src="storage/img/shop/aika_shop2.png">
-                </a>
+                @endforeach
             </div>
-            <a class="button-link" href="https://hermestage.stores.jp/">
-                <img src="storage/img/hp/btn_goodsbtn.png">
+            <a class="button-link" target="_blank" href="https://hermestage.stores.jp/">
+                <img src="{{ asset($goodsBtn->FILE_PATH . $goodsBtn->FILE_NAME) }}" alt="{{ $goodsBtn->COMMENT }}" >
             </a>
         </div>
 
         <!-- 問い合わせ -->
         <div class="index" id="contact">
-            <img src="storage/img/hp/contact.png">
+            <img src="{{ asset($contactTitle->FILE_PATH . $contactTitle->FILE_NAME) }}" alt="{{ $contactTitle->COMMENT }}" >
             <div class="contact-section">
                 <div class="contact-contents">
                     <div class="contact-title">
@@ -191,7 +168,7 @@
                 </div>
             </div>
             <a class="button-link" href="{{ route('contact') }}">
-                <img src="storage/img/hp/btn_contact.png">
+                <img src="{{ asset($contactBtn->FILE_PATH . $contactBtn->FILE_NAME) }}" alt="{{ $contactBtn->COMMENT }}" >
             </a>
         </div>
 
@@ -199,12 +176,12 @@
         <div class="index" id="guide-line">
             <div class="guide-line-section">
                 <div class="pop-title">
-                    <img src="storage/img/hp/guideline.png">
+                    <img src="{{ asset($guidelineTitle->FILE_PATH . $guidelineTitle->FILE_NAME) }}" alt="{{ $guidelineTitle->COMMENT }}" >
                 </div>
                 <div class="guid-images">
                     <a href="">〇Skeb依頼はこちらのテンプレートをご利用ください。</a><br><br>
                     <div class="guid-image">
-                        <img src="storage/img/hp/mascot.png">
+                        <img src="{{ asset($mascot->FILE_PATH . $mascot->FILE_NAME) }}" alt="{{ $mascot->COMMENT }}" >
                         二次創作につきまして
                     </div>
                 </div>
@@ -247,18 +224,11 @@
         <!-- フッター -->
         <div class="index" id="footer">
             <div class="sns-icons">
-                <a class="sns-icon" href="https://hermestage.stores.jp/">
-                    <img src="storage/img/hp/btn_shop.png" >
+                @foreach ($footerSnsIcons as $snsIcon)
+                <a class="sns-icon" target="_blank" href="{{ $snsIcon->SPARE1 }}">
+                    <img src="{{ asset($snsIcon->FILE_PATH . $snsIcon->FILE_NAME) }}" alt="{{ $snsIcon->COMMENT }}" >
                 </a>
-                <a class="sns-icon" href="https://x.com/KuziranoAika">
-                    <img src="storage/img/hp/btn_X.png" >
-                </a>
-                <a class="sns-icon" href="https://www.youtube.com/@aika_VT">
-                    <img src="storage/img/hp/btn_YouTube.png" >
-                </a>
-                <a class="sns-icon" href="">
-                    <img src="storage/img/hp/btn_instagram.png" >
-                </a>
+                @endforeach
             </div>
         </div>
     </div>

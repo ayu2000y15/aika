@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @stack('styles')
 </head>
-<style>
-    body {
-        background-image: url(storage/img/hp/back.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin: 0;
-    }
-</style>
+
 <body>
     <script src="{{ asset('js/script.js') }}"></script>
 

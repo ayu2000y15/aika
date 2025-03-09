@@ -6,21 +6,33 @@ use App\Mail\ContactSendmail;
 use App\Models\ContactCategory;
 use App\Models\Contact;
 use App\Models\GeneralDefinition;
+use App\Models\Image;
+
 
 
 class ContactController extends Controller
 {
     public function contact()
     {
+        $contactTitle = Image::where('VIEW_FLG', 'TOP_title_contact')->active()->first();
+        $backImg = Image::where('VIEW_FLG', 'CONTACT_back')->active()->first();
+
         $contactCategories = ContactCategory::where('DEL_FLG','=','0')->orderBy('SPARE1')->orderBy('CONTACT_CATEGORY_ID')->get();
-        return view('contact' ,compact('contactCategories'));
+        return view('contact' ,compact('contactCategories'
+        , 'contactTitle'
+        ,'backImg'));
     }
 
     public function confirm(Request $request)
     {
+        $contactTitle = Image::where('VIEW_FLG', 'TOP_title_contact')->active()->first();
+        $backImg = Image::where('VIEW_FLG', 'CONTACT_back')->active()->first();
+
         $contact = $request->all();
         $contactCategory = ContactCategory::where('CONTACT_CATEGORY_ID','=',$request->CONTACT_CATEGORY_ID)->first();
-        return view('confirm', compact('contact', 'contactCategory'));
+        return view('confirm', compact('contact', 'contactCategory'
+        , 'contactTitle'
+        , 'backImg'));
     }
 
     public function send(Request $request)

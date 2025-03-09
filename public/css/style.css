@@ -3,13 +3,39 @@
     margin: 0;
 }
 
+.dli-arrow-up {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    line-height: 1;
+    position: relative;
+    width: 0.1em;
+    height: 1em;
+    background: currentColor;
+}
+
+.dli-arrow-up::before {
+    content: '';
+    width: 0.65em;
+    height: 0.65em;
+    border: 0.1em solid currentColor;
+    border-left: 0;
+    border-bottom: 0;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+    position: absolute;
+    top: -0.05em;
+    right: 50%;
+    box-sizing: border-box;
+}
+
 .back-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: #007bffc0;
     color: #fff;
-    padding: 10px 15px;
+    padding: 10px 20px;
     text-decoration: none;
     border-radius: 999px;
     font-weight: bold;
@@ -203,6 +229,7 @@
 .movie iframe{
     width:300px;
     height:200px;
+    margin: 0.5rem;
 }
 
 .article {
@@ -279,7 +306,7 @@
 
 .goods-image img {
     margin-left: 2rem;
-    height: 350px;
+    height: 300px;
 }
 
 .goods-image a{
@@ -324,6 +351,70 @@
 
 .gallery-image img:hover {
     transform: scale(1.05);
+}
+
+.dli-chevron-round-left {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    line-height: 1;
+    position: relative;
+    width: 0.7em;
+    height: 0.7em;
+    transform: translateX(25%) rotate(-135deg);
+}
+
+.dli-chevron-round-left::before, .dli-chevron-round-left::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 0.1em;
+}
+
+.dli-chevron-round-left::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.1em;
+}
+
+.dli-chevron-round-left::after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0.1em;
+}
+
+.dli-chevron-round-right {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    line-height: 1;
+    position: relative;
+    width: 0.7em;
+    height: 0.7em;
+    transform: translateX(-25%) rotate(45deg);
+}
+
+.dli-chevron-round-right::before, .dli-chevron-round-right::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    border-radius: 0.1em;
+}
+
+.dli-chevron-round-right::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.1em;
+}
+
+.dli-chevron-round-right::after {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0.1em;
 }
 
 /* モーダル表示用のスタイル */
@@ -395,23 +486,6 @@
 
 .modal-nav button.next-btn {
     margin-right: 30px;
-}
-
-/* 矢印のスタイルを修正 */
-.modal-nav button::before {
-    content: "";
-    display: block;
-    width: 8px;
-    height: 8px;
-    border-top: 2px solid white;
-    border-right: 2px solid white;
-    transform: rotate(45deg);
-    margin-left: -2px;
-}
-
-.modal-nav button.prev-btn::before {
-    transform: rotate(-135deg);
-    margin-left: 2px;
 }
 
   /* モーダル内の画像カウンター */
@@ -524,6 +598,11 @@
     font-weight: bold;
     font-size: 1.6rem;
     text-decoration: underline;
+}
+
+.guid-images a:hover{
+    color: #fb99fe;
+    transform: translateY(-3px);
 }
 
 .guid-image {

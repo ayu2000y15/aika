@@ -2,9 +2,17 @@
 @section('title', '鯨野アイカ - お問い合わせ')
 
 @section('content')
+<style>
+    body {
+        background-image: url("{{ asset($backImg->FILE_PATH . $backImg->FILE_NAME) }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+    }
+</style>
     <div class="container">
         <a href="#top" class="back-to-top">↑</a>
-        <img class="contact-top" src="storage/img/hp/contact.png" >
+        <img class="contact-top" src="{{ asset($contactTitle->FILE_PATH . $contactTitle->FILE_NAME) }}" alt="{{ $contactTitle->COMMENT }}" >
 
         <div id="contact-page">
             <div id="contact-form">
