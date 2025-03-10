@@ -55,6 +55,7 @@
                         <th>プレビュー</th>
                         <th>表示先</th>
                         <th>タイトル</th>
+                        <th>優先度</th>
                         <th>アップロード日時</th>
                         <th>操作</th>
                     </tr>
@@ -66,6 +67,7 @@
                             <td><img src="{{ asset( $photo->FILE_PATH . $photo->FILE_NAME) }}" alt="{{ $photo->ALT }}" style="max-width: 100px; max-height: 100px;"></td>
                             <td>{{ $photo->V_COMMENT }}</td>
                             <td>{{ $photo->ALT }}</td>
+                            <td>{{ $photo->PRIORITY }}</td>
                             <td>{{ $photo->INS_DATE}}</td>
                             <td>
                                 <button type="button" class="edit-btn" data-id="{{ $photo->IMAGE_ID }}"

@@ -28,6 +28,7 @@ class AdminPhotoController extends Controller
             'img.FILE_PATH as FILE_PATH',
             'img.VIEW_FLG as VIEW_FLG',
             'img.COMMENT as ALT',
+            'img.PRIORITY as PRIORITY',
             'img.INS_DATE as INS_DATE',
             'view.COMMENT as V_COMMENT'
             )
@@ -65,14 +66,14 @@ class AdminPhotoController extends Controller
 
     public function update(Request $request)
     {
-        $img = Image::where('FILE_NAME', $request->FILE_NAME)->first();
+        $img = Image::where('IMAGE_ID', $request->IMAGE_ID)->first();
         $img->update([
-            'VIEW_FLG' => $request->VIEW_FLG_AFT,
+            'VIEW_FLG' => $request->VIEW_FLG,
+            'COMMENT' => $request->COMMENT,
             'PRIORITY' => $request->PRIORITY
         ]);
-        return redirect()->route('admin')
-        ->with('success', '写真の表示設定が変更されました。')
-        ->with('activeTab', 'photos-entry');
+        return redirect()->route('admin.photo')
+        ->with('success', '画像の表示設定が変更されました。');
     }
 
     public function delete(Request $request)
@@ -88,17 +89,4 @@ class AdminPhotoController extends Controller
         ->with('error', '画像の削除に失敗しました。');
     }
 
-    public function bulkUpdate(Request $request)
-    {
-        foreach($request->SELECTED_PHOTOS as $photo){
-            $img = Image::where('FILE_NAME', $photo);
-            $img->update([
-                'VIEW_FLG' => $request->BULK_VIEW_FLG,
-                'PRIORITY' => $request->PRIORITY
-            ]);
-        }
-        return redirect()->route('admin')
-        ->with('message', '写真の表示設定が変更されました。')
-        ->with('activeTab', 'photos-entry');
-    }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         $data = [
-            ['0', '開発者', 'admin.dashboards', 'admin'],
+            ['0', '開発者', 'admin.information', 'admin'],
             ['1', 'サイト管理者', 'admin.index-dev', 'admin.dev'],
             ['2', '一般ユーザー', 'admin.index-guest', 'admin.guest']
         ];

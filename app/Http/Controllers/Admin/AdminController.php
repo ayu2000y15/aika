@@ -35,7 +35,7 @@ class AdminController extends Controller
         return redirect()->route('login')
         ->with('error', 'ログアウトしました。再度ログインしてください');    }
 
-    public function dashboards()
+    public function index()
     {
         if (!Session::has('access_view')) {
             return redirect()->route('login')
@@ -43,7 +43,7 @@ class AdminController extends Controller
         }
 
         $access_view = Session::get('access_view');
-        return view($access_view);
+        return redirect()->route($access_view);
     }
 
     public function indexGuest()
