@@ -8,20 +8,26 @@
 </head>
 <body>
     <div class="admin-container">
-        @include('admin.component.admin-nav')
-        <main class="admin-main">
-            <div class="admin-container">
-                @if (session('success'))
-                <div class="success-message">{{ session('success') }}</div>
-                @endif
-                @if (session('error'))
-                    <div class="error-message">{{ session('error') }}</div>
-                @endif
+        <div class="pc-area">
+            @include('admin.component.admin-nav')
 
-                @yield('content')
-            </div>
-        </main>
+            <main class="admin-main">
+                <div class="admin-container">
+                    @if (session('success'))
+                    <div class="success-message">{{ session('success') }}</div>
+                    @endif
+                    @if (session('error'))
+                        <div class="error-message">{{ session('error') }}</div>
+                    @endif
 
+                    @yield('content')
+                </div>
+            </main>
+        </div>
+        <div class="no-area">
+            <br><br><br>
+            <p>スマートフォンでは操作できません。<br>PCで操作してください。</p>
+        </div>
     </div>
 </body>
 </html>

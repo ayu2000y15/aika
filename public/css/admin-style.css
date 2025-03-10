@@ -539,8 +539,19 @@ h2 {
     min-width: 120px; /* 最小幅を設定 */
 }
 
+.no-area{
+    display: none;
+}
 /* メディアクエリ */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+    .pc-area{
+        display: none;
+    }
+
+    .no-area{
+        display: inline;
+    }
+
     .admin-container {
         margin: 0 10px;
     }
