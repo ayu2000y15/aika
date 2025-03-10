@@ -13,7 +13,7 @@ class Information extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'TITLE', 'CONTENT', 'PRIORITY', 'POST_DATE', 'SPARE1', 'SPARE2', 'DEL_FLG'
+        'TITLE', 'CONTENT', 'PRIORITY', 'POST_DATE', 'PUBLIC_FLG', 'SPARE1', 'SPARE2', 'DEL_FLG'
     ];
 
     protected $dates = ['POST_DATE', 'INS_DATE', 'UPD_DATE'];

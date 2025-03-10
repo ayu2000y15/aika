@@ -70,9 +70,31 @@
                 <img src="{{ asset($deliveryTitle->FILE_PATH . $deliveryTitle->FILE_NAME) }}" alt="{{ $deliveryTitle->COMMENT }}" >
             </div>
             <div class="movie">
-                @foreach ($deliveryMovieList as $deliveryMovie)
-                    <iframe  src="{{ asset($deliveryMovie->FILE_NAME) }}" title="{{ $deliveryTitle->deliveryMovie }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                @endforeach
+                <?php
+                    $xml = simplexml_load_file('https://www.youtube.com/feeds/videos.xml?channel_id=UC9Io4j2kf_LqbKp8nwvfHSQ');
+                    $count = 0;
+                    foreach($xml as $item){
+                        if($item->id) {
+                            $title = $item->title;
+                            \Debugbar::addMessage($item);
+
+                            $id = $item->children('yt', true)->videoId[0];
+                            $html = '<div class="movie-area">
+                                        <a href="https://www.youtube.com/watch?v='.$id.'" target="_blank">
+                                            <div class="movie-img">
+                                                <img style="height: 200px" src="https://i1.ytimg.com/vi/'.$id.'/hqdefault.jpg">
+                                            </div>
+                                        <p>'.$title.'</p>
+                                        </a>
+                                    </div>';
+                            echo $html;
+                            $count++;
+                        }
+                        if($count >= 3) {
+                            break;
+                        }
+                    }
+                ?>
             </div>
         </div>
 
@@ -87,7 +109,7 @@
                         <div class="title">{{ $info->TITLE }}</div>
                     </div>
                     <div class="down">
-                        <div class="content">{{ $info->CONTENT }}</div>
+                        <div class="content">{!! nl2br(e($info->CONTENT)) !!}</div>
                     </div>
                 </div>
             @endforeach
@@ -417,3 +439,4 @@
         };
     </script>
 @endsection
+

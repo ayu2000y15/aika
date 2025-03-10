@@ -7,7 +7,7 @@ use App\Models\Image;
 
 class FileUploadService
 {
-    public function uploadFiles($files, $uploadDir)
+    public function uploadFiles($files, $uploadDir, $request)
     {
             // 単一のファイルの場合は配列に変換
         if (!is_array($files)) {
@@ -34,7 +34,7 @@ class FileUploadService
 
                 if ($size > $maxSize) {
                     \Log::warning("ファイルサイズが制限を超えています: {$originalFileName}, サイズ: {$size}");
-                    continue; // 次のファイルへ
+                    return ['success' => false, 'message' => "ファイルサイズが制限を超えています: {$originalFileName}, サイズ: {$size}"];
                 }
 
                 // 許可されるMIMEタイプ
@@ -42,7 +42,7 @@ class FileUploadService
 
                 if (!in_array($mimeType, $allowedMimeTypes)) {
                     \Log::warning("無効なファイルタイプです: {$originalFileName}, タイプ: {$mimeType}");
-                    continue; // 次のファイルへ
+                    return ['success' => false, 'message' => "無効なファイルタイプです: {$originalFileName}, タイプ: {$mimeType}"];
                 }
 
                 try {
@@ -59,16 +59,18 @@ class FileUploadService
                     Image::create([
                         'FILE_NAME' => $newFileName,
                         'FILE_PATH' => 'storage/img/' . basename($uploadDir) . '/',
-                        'VIEW_FLG' => '00', // デフォルト値
-                        'PRIORITY' => 0 // デフォルト値
+                        'VIEW_FLG' => $request->VIEW_FLG,
+                        'PRIORITY' => $request->PRIORITY
                     ]);
 
                     \Log::info("ファイルがアップロードされました: 元のファイル名: {$originalFileName}, 新しいファイル名: {$newFileName}, サイズ: {$size}, タイプ: {$mimeType}, 保存先: {$storedPath}");
                 } catch (\Exception $e) {
                     \Log::error("ファイルのアップロード中にエラーが発生しました: {$originalFileName}. エラー: " . $e->getMessage());
+                    return ['success' => false, 'message' => "ファイルのアップロード中にエラーが発生しました: {$originalFileName}. エラー: " . $e->getMessage()];
                 }
             } else {
                 \Log::warning("無効なファイルです: {$file->getClientOriginalName()}");
+                return ['success' => false, 'message' => "無効なファイルです: {$file->getClientOriginalName()}"];
             }
         }
         return ['success' => true, 'message' => 'ファイルが正常にアップロードされました。'];
@@ -77,8 +79,10 @@ class FileUploadService
     public function deleteFile($filePath)
     {
 
+
         if (Storage::disk('public')->delete(str_replace('storage/','',$filePath))) {
             return true;
+
         }
         return false;
     }

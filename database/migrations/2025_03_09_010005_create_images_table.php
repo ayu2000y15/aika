@@ -9,6 +9,7 @@ class CreateImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
+            $table->integer('IMAGE_ID')->primary()->autoIncrement()->comment('画像ID');
             $table->string('FILE_NAME', 100)->comment('ファイル名');
             $table->string('FILE_PATH', 100)->nullable()->comment('格納先パス');
             $table->char('VIEW_FLG', 20)->default('00')->comment('表示フラグ');

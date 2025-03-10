@@ -226,6 +226,69 @@
     height:50px;
 }
 
+.movie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.movie-area {
+    width: 300px;
+    margin: 0.5rem;
+}
+
+/* movie-imgクラスを相対位置に設定し、YouTubeロゴを配置できるようにします */
+.movie-img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* YouTubeロゴを表示するための疑似要素 */
+.movie-img::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 48px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 48'%3E%3Cpath d='M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z' fill='%23f00'%3E%3C/path%3E%3Cpath d='M 45,24 27,14 27,34' fill='%23fff'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+  /* ホバー時のスタイル */
+.movie-img:hover img {
+    transform: scale(1.05);
+}
+
+.movie-area img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.movie-area img:hover {
+    transform: scale(1.05);
+}
+
+.movie-area a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 0.5rem;
+    text-align: left;
+}
+
 .movie iframe{
     width:300px;
     height:200px;
@@ -295,7 +358,7 @@
 
 .article .content {
     font-size: 1.1rem;
-    color: #ef8be0;
+    color: #fb63c6;
     text-align: left;
 }
 
@@ -845,13 +908,6 @@ body {
 
   /* 7. 500px以下の画面幅に対応するメディアクエリを追加 */
 @media (max-width: 600px) {
-    .movie {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
     .movie iframe {
         width: 100%;
         max-width: 300px;
