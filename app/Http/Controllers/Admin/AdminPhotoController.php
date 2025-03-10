@@ -22,7 +22,7 @@ class AdminPhotoController extends Controller
     public function index(Request $request)
     {
         $viewFlg = ViewFlag::orderBy('VIEW_FLG')->get();
-        $photos = DB::table('Images as img')
+        $photos = DB::table('images as img')
         ->select('img.IMAGE_ID as IMAGE_ID',
             'img.FILE_NAME as FILE_NAME',
             'img.FILE_PATH as FILE_PATH',
