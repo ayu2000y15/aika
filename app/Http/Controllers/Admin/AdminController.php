@@ -25,7 +25,8 @@ class AdminController extends Controller
             ->with('error', 'ログインに失敗しました。IDかパスワードが間違っています。');
         }
         $user = $user->first();
-        $root = AccessControl::select('access_view', 'access_root')->where('access_id', $user['access_id'])->first();
+        $root = AccessControl::select('access_id', 'access_view', 'access_root')->where('access_id', $user['access_id'])->first();
+        Session::put('access_id', $root->access_id);
         Session::put('access_view', $root->access_view);
         return redirect()->route($root->access_root);
     }
@@ -46,15 +47,4 @@ class AdminController extends Controller
         return redirect()->route($access_view);
     }
 
-    public function indexGuest()
-    {
-        //ロゴ
-        $access_view = Session::get('access_view');
-        if (!Session::has('activeTab')) {
-            session()->flash('activeTab', 'talent-entry');
-        }
-        return view($access_view, compact(
-        'logoImg'
-        ));
-    }
 }

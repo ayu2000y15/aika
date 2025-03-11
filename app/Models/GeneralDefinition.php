@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class GeneralDefinition extends Model
 {
     protected $table = 'general_definitions';
+    protected $primaryKey = 'DEFINITION_ID';
     const CREATED_AT = 'INS_DATE';
     const UPDATED_AT = 'UPD_DATE';
     public $timestamps = true;

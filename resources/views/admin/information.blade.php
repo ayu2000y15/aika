@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', 'お知らせ登録')
+@section('title', 'お知らせ管理')
 
 @section('content')
     <h2>お知らせ登録</h2>
     <button type="button" class="new-entry-btn" id="newEntryBtn">新規登録</button>
     <div class="data-form-container" id="dataForm" style="display: none;">
-        <h3>お知らせ登録・更新フォーム</h3>
+        <h3>お知らせ登録・更新</h3>
         <form action="{{ route('admin.information.store') }}" method="POST" class="data-form">
             @csrf
             <button type="button" class="cancel-btn" id="cancelBtn"></button>

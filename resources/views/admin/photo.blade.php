@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'HP画像登録')
+@section('title', 'HP画像管理')
 
 @section('content')
     <h2>HP画像登録</h2>

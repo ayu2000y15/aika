@@ -9,6 +9,7 @@ class CreateGeneralDefinitionsTable extends Migration
     public function up()
     {
         Schema::create('general_definitions', function (Blueprint $table) {
+            $table->integer('DEFINITION_ID')->primary()->autoIncrement()->comment('定義ID');
             $table->string('DEFINITION', 300)->comment('定義');
             $table->string('ITEM', 300)->comment('内容');
             $table->string('EXPLANATION', 300)->comment('説明');

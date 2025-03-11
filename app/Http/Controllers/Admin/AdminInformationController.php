@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Information;
 
-
-use Illuminate\Support\Facades\Session;
 class AdminInformationController extends Controller
 {
     protected $fileUploadService;

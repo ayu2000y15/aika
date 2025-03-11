@@ -9,7 +9,6 @@ use App\Models\ViewFlag;
 use App\Services\FileUploadService;
 use Illuminate\Support\Facades\DB;
 
-
 class AdminPhotoController extends Controller
 {
     protected $fileUploadService;
