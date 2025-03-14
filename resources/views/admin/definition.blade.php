@@ -31,40 +31,41 @@
 
     <div class="data-list-container">
         <h3>登録済みデータ一覧</h3>
-
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>定義ID</th>
-                    <th>定義</th>
-                    <th>内容</th>
-                    <th>説明</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($definition as $def)
+        <div class="data-table-wrapper">
+            <table class="data-table">
+                <thead>
                     <tr>
-                        <td>{{ $def->DEFINITION_ID }}</td>
-                        <td>{{ $def->DEFINITION }}</td>
-                        <td>{{ $def->ITEM }}</td>
-                        <td>{{ $def->EXPLANATION }}</td>
-                        <td>
-                            <button class="edit-btn" data-id="{{ $def->DEFINITION_ID }}"
-                                    data-definition="{{ $def->DEFINITION }}"
-                                    data-item="{{ $def->ITEM }}"
-                                    data-explanation="{{ $def->EXPLANATION }}">編集</button>
-                            <form action="{{ route('admin.definition.delete') }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="DEFINITION_ID" value="{{ $def->DEFINITION_ID }}">
-                                <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？');">削除</button>
-                            </form>
-                        </td>
+                        <th>定義ID</th>
+                        <th>定義</th>
+                        <th>内容</th>
+                        <th>説明</th>
+                        <th>操作</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($definition as $def)
+                        <tr>
+                            <td>{{ $def->DEFINITION_ID }}</td>
+                            <td>{{ $def->DEFINITION }}</td>
+                            <td>{{ $def->ITEM }}</td>
+                            <td>{{ $def->EXPLANATION }}</td>
+                            <td>
+                                <button class="edit-btn" data-id="{{ $def->DEFINITION_ID }}"
+                                        data-definition="{{ $def->DEFINITION }}"
+                                        data-item="{{ $def->ITEM }}"
+                                        data-explanation="{{ $def->EXPLANATION }}">編集</button>
+                                <form action="{{ route('admin.definition.delete') }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="DEFINITION_ID" value="{{ $def->DEFINITION_ID }}">
+                                    <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？');">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
 <script>

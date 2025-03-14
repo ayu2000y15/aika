@@ -48,46 +48,47 @@
 
     <div class="data-list-container">
         <h3>登録済みデータ一覧</h3>
-
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>優先度</th>
-                    <th>ID</th>
-                    <th>投稿日</th>
-                    <th>タイトル</th>
-                    <th>内容</th>
-                    <th>公開フラグ</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($information as $info)
+        <div class="data-table-wrapper">
+            <table class="data-table">
+                <thead>
                     <tr>
-                        <td>{{ $info->PRIORITY }}</td>
-                        <td>{{ $info->INFORMATION_ID }}</td>
-                        <td>{{ $info->POST_DATE }}</td>
-                        <td>{{ $info->TITLE }}</td>
-                        <td>{!! nl2br(e($info->CONTENT)) !!}</td>
-                        <td>{{ $info->PUBLIC_FLG ? '公開' : '非公開' }}</td>
-                        <td>
-                            <button class="edit-btn" data-id="{{ $info->INFORMATION_ID }}"
-                                    data-post-date="{{ $info->POST_DATE }}"
-                                    data-title="{{ $info->TITLE }}"
-                                    data-content="{{ $info->CONTENT }}"
-                                    data-public-flg="{{ $info->PUBLIC_FLG }}"
-                                    data-priority="{{ $info->PRIORITY }}">編集</button>
-                            <form action="{{ route('admin.information.delete') }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <input type="hidden" name="INFORMATION_ID" value="{{ $info->INFORMATION_ID }}">
-                                <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？');">削除</button>
-                            </form>
-                        </td>
+                        <th>優先度</th>
+                        <th>ID</th>
+                        <th>投稿日</th>
+                        <th>タイトル</th>
+                        <th>内容</th>
+                        <th>公開フラグ</th>
+                        <th>操作</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($information as $info)
+                        <tr>
+                            <td>{{ $info->PRIORITY }}</td>
+                            <td>{{ $info->INFORMATION_ID }}</td>
+                            <td>{{ $info->POST_DATE }}</td>
+                            <td>{{ $info->TITLE }}</td>
+                            <td>{!! nl2br(e($info->CONTENT)) !!}</td>
+                            <td>{{ $info->PUBLIC_FLG ? '公開' : '非公開' }}</td>
+                            <td>
+                                <button class="edit-btn" data-id="{{ $info->INFORMATION_ID }}"
+                                        data-post-date="{{ $info->POST_DATE }}"
+                                        data-title="{{ $info->TITLE }}"
+                                        data-content="{{ $info->CONTENT }}"
+                                        data-public-flg="{{ $info->PUBLIC_FLG }}"
+                                        data-priority="{{ $info->PRIORITY }}">編集</button>
+                                <form action="{{ route('admin.information.delete') }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" name="INFORMATION_ID" value="{{ $info->INFORMATION_ID }}">
+                                    <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？');">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
 <script>
