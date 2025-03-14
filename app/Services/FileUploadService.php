@@ -59,6 +59,7 @@ class FileUploadService
                     Image::create([
                         'FILE_NAME' => $newFileName,
                         'FILE_PATH' => 'storage/img/' . basename($uploadDir) . '/',
+                        'COMMENT' => $request->COMMENT,
                         'VIEW_FLG' => $request->VIEW_FLG,
                         'PRIORITY' => $request->PRIORITY
                     ]);

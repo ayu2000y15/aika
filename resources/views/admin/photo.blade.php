@@ -22,8 +22,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="COMMENT">タイトル<span class="required">*</span></label>
-                <input type="text" id="COMMENT" name="COMMENT" required>
+                <label for="COMMENT">タイトル<span class="required"></span></label>
+                <input type="text" id="COMMENT" name="COMMENT" >
             </div>
             <div class="form-group">
                 <label for="VIEW_FLG">表示先<span class="required">*</span></label>
