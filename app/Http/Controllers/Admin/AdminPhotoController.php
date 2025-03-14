@@ -20,7 +20,7 @@ class AdminPhotoController extends Controller
 
     public function index(Request $request)
     {
-        $viewFlg = ViewFlag::orderBy('VIEW_FLG')->get();
+        $viewFlg = ViewFlag::where('VIEW_FLG', '<>', 'TOP_10')->orderBy('VIEW_FLG')->get();
         $photos = DB::table('images as img')
         ->select('img.IMAGE_ID as IMAGE_ID',
             'img.FILE_NAME as FILE_NAME',
@@ -32,6 +32,7 @@ class AdminPhotoController extends Controller
             'view.COMMENT as V_COMMENT'
             )
         ->join('view_flags as view', 'img.VIEW_FLG', '=' ,'view.VIEW_FLG')
+        ->where('img.VIEW_FLG', '<>', 'TOP_10')
         ->orderBy('img.VIEW_FLG')
         ->orderBy('img.PRIORITY')
         ->orderBy('img.IMAGE_ID')

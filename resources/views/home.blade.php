@@ -52,8 +52,8 @@
                     <p><strong>誕生日</strong>：９月４日</p>
                     <p><strong>性　格</strong>：表情豊か、いたずら好き<br>
                         　　　　よく笑う、行動的</p>
-                    <p><strong>好きなもの</strong>：ホロライブのみなさん<br>
-                        　　　　　　お笑い、ゲーム</p>
+                    <p><strong>好きなもの</strong>：インディーゲーム、特にローグライクが好き
+                        <br>お笑いも大好き</p>
                 </div>
                 <div class="introduction-icon avatar">
                     <img src="{{ asset($avatar2->FILE_PATH . $avatar2->FILE_NAME) }}" alt="{{ $avatar2->COMMENT }}" >
@@ -70,13 +70,16 @@
                 <img src="{{ asset($deliveryTitle->FILE_PATH . $deliveryTitle->FILE_NAME) }}" alt="{{ $deliveryTitle->COMMENT }}" >
             </div>
             <div class="movie">
+                @foreach ($deliveryMovieList as $deliveryMovie)
+                    <iframe  src="{{ asset($deliveryMovie->FILE_NAME) }}"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                @endforeach
                 <?php
+                /*
                     $xml = simplexml_load_file('https://www.youtube.com/feeds/videos.xml?channel_id=UC9Io4j2kf_LqbKp8nwvfHSQ');
                     $count = 0;
                     foreach($xml as $item){
                         if($item->id) {
                             $title = $item->title;
-                            \Debugbar::addMessage($item);
 
                             $id = $item->children('yt', true)->videoId[0];
                             $html = '<div class="movie-area">
@@ -94,6 +97,7 @@
                             break;
                         }
                     }
+                */
                 ?>
             </div>
         </div>
@@ -201,7 +205,7 @@
                     <img src="{{ asset($guidelineTitle->FILE_PATH . $guidelineTitle->FILE_NAME) }}" alt="{{ $guidelineTitle->COMMENT }}" >
                 </div>
                 <div class="guid-images">
-                    <a href="">〇Skeb依頼はこちらのテンプレートをご利用ください。</a><br><br>
+                    <a href="https://docs.google.com/document/d/1XKSCilKnz8v8mFvcT-JVWQt4Dba-p9Z7rblgd5wv2iI/edit?usp=sharing">〇Skeb依頼はこちらのテンプレートをご利用ください。</a><br><br>
                     <div class="guid-image">
                         <img src="{{ asset($mascot->FILE_PATH . $mascot->FILE_NAME) }}" alt="{{ $mascot->COMMENT }}" >
                         二次創作につきまして
@@ -229,7 +233,7 @@
                     </div>
                     <div class="guide-contents">
                         <div class="guide-title">
-                            <p>■商的利用も条件次第で構いません。<br>
+                            <p>■商用利用も条件次第で構いません。<br>
                                 お気軽にご相談ください。</p>
                         </div>
                         <div class="guide-content">

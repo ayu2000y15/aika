@@ -542,6 +542,27 @@ h2 {
 .no-area{
     display: none;
 }
+
+/* movie-editのスタイルを追加 */
+.movie-edit {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    width: 280px; /* 動画の幅を固定 */
+    vertical-align: top;
+}
+
+.movie-edit iframe {
+    width: 100%;
+    height: 200px; /* 動画の高さを固定 */
+}
+
+.movie-edit .edit-btn {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+
 /* メディアクエリ */
 @media (max-width: 768px) {
     .pc-area{

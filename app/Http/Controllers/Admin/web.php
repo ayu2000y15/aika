@@ -31,11 +31,6 @@ Route::post('/admin/information/store', [AdminInformationController::class, 'sto
 Route::post('/admin/information/update', [AdminInformationController::class, 'update'])->name('admin.information.update');
 Route::delete('/admin/information/delete', [AdminInformationController::class, 'delete'])->name('admin.information.delete');
 
-//配信動画管理
-Route::get('/admin/movie', [AdminMovieController::class, 'index'])->name('admin.movie');
-Route::post('/admin/movie/store', [AdminMovieController::class, 'store'])->name('admin.movie.store');
-Route::post('/admin/movie/', [AdminMovieController::class, 'update'])->name('admin.movie.update');
-
 //画像管理
 Route::get('/admin/photo', [AdminPhotoController::class, 'index'])->name('admin.photo');
 Route::post('/admin/photo/store', [AdminPhotoController::class, 'store'])->name('admin.photo.store');
