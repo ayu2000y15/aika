@@ -17,10 +17,10 @@
                     例、<br>＜iframe width="560" height="315" src="<span style="color: red;">https://www.youtube.com/embed/RsAow8Rh-AA?si=LW9hjkns3N9ibRfr</span>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen＞＜/iframe＞</p>
                 <input type="text" id="FILE_NAME" name="FILE_NAME" required>
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="PRIORITY">優先度</label>
                 <input type="number" id="PRIORITY" name="PRIORITY" >
-            </div>
+            </div> --}}
             <div class="form-actions">
                 <button type="submit" onclick="return confirm('更新しますか？');" class="submit-btn" id="submitBtn">更新</button>
             </div>
@@ -33,8 +33,7 @@
         <div class="movie-edit">
             <iframe  src="{{ asset($deliveryMovie->FILE_NAME) }}"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <button class="edit-btn" data-id="{{ $deliveryMovie->IMAGE_ID }}"
-                data-file-name="{{ $deliveryMovie->FILE_NAME }}"
-                data-priority="{{ $deliveryMovie->PRIORITY }}">編集</button>
+                data-file-name="{{ $deliveryMovie->FILE_NAME }}">編集</button>
         </div>
         @endforeach
     </div>
@@ -68,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             document.getElementById('IMAGE_ID').value = imageId;
             document.getElementById('FILE_NAME').value = fileName;
-            document.getElementById('PRIORITY').value = priority;
+            //document.getElementById('PRIORITY').value = priority;
 
             submitBtn.textContent = '更新';
             form.action = "{{ route('admin.movie.update') }}";
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         form.reset();
         document.getElementById('IMAGE_ID').value = '';
         document.getElementById('FILE_NAME').value = '';
-        document.getElementById('PRIORITY').value = '';
+        //document.getElementById('PRIORITY').value = '';
 
         submitBtn.textContent = '登録';
         form.action = "{{ route('admin.movie.store') }}";

@@ -22,7 +22,7 @@ class AdminMovieController extends Controller
         $movie = Image::where('IMAGE_ID', $request->IMAGE_ID);
         $movie->update([
             'FILE_NAME' => $request->FILE_NAME,
-            'PRIORITY' => $request->PRIORITY
+            //'PRIORITY' => $request->PRIORITY
         ]);
         return redirect()->route('admin.movie')
         ->with('success', '配信動画が更新されました。');
