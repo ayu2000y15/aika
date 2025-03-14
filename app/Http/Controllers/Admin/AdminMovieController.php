@@ -17,6 +17,13 @@ class AdminMovieController extends Controller
         return view('admin.movie', compact('movie', 'deliveryMovieList'));
     }
 
+    public function store(Request $request){
+        Image::create($request->all());
+
+        return redirect()->route('admin.movie')
+        ->with('success', '動画が登録されました。');
+    }
+
     public function update(Request $request)
     {
         $movie = Image::where('IMAGE_ID', $request->IMAGE_ID);
@@ -25,7 +32,14 @@ class AdminMovieController extends Controller
             //'PRIORITY' => $request->PRIORITY
         ]);
         return redirect()->route('admin.movie')
-        ->with('success', '配信動画が更新されました。');
+        ->with('success', '動画が更新されました。');
+    }
+
+    public function delete(Request $request)
+    {
+        Image::destroy($request->IMAGE_ID);
+        return redirect()->route('admin.information')
+        ->with('success', '動画が削除されました。');
     }
 
 }
