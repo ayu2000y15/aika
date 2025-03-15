@@ -5,13 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Information;
+use App\Services\PlanetextToUrl;
 
 class AdminInformationController extends Controller
 {
-    protected $fileUploadService;
+    protected $convert;
+    public function __construct(PlanetextToUrl $planetextToUrl)
+    {
+        $this->convert = $planetextToUrl;
+    }
 
     public function index(){
-        $information = Information::orderBy('PRIORITY')->get();
+        $information = Information::orderByRaw('PRIORITY is null')
+        ->orderByRaw('PRIORITY = 0')->orderBy('PRIORITY')->get();
+
+        foreach($information as $info){
+            $info->CONTENT = $this->convert->convertLink($info->CONTENT);
+        }
 
         return view('admin.information', compact('information'));
     }

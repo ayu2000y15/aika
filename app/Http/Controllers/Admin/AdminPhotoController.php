@@ -34,6 +34,8 @@ class AdminPhotoController extends Controller
         ->join('view_flags as view', 'img.VIEW_FLG', '=' ,'view.VIEW_FLG')
         ->where('img.VIEW_FLG', '<>', 'TOP_10')
         ->orderBy('img.VIEW_FLG')
+        ->orderByRaw('img.PRIORITY is null')
+        ->orderByRaw('img.PRIORITY = 0')
         ->orderBy('img.PRIORITY')
         ->orderBy('img.IMAGE_ID')
         ->get();

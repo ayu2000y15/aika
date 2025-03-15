@@ -11,8 +11,14 @@ class AdminMovieController extends Controller
     protected $fileUploadService;
 
     public function index(){
-        $movie = Image::where('VIEW_FLG', 'TOP_10')->orderBy('PRIORITY')->get();
-        $deliveryMovieList = Image::where('VIEW_FLG', 'TOP_10')->active()->orderBy('PRIORITY')->get();
+        $movie = Image::where('VIEW_FLG', 'TOP_10')
+        ->orderByRaw('PRIORITY is null')
+        ->orderByRaw('PRIORITY = 0')
+        ->orderBy('PRIORITY')->get();
+        $deliveryMovieList = Image::where('VIEW_FLG', 'TOP_10')->active()
+        ->orderByRaw('PRIORITY is null')
+        ->orderByRaw('PRIORITY = 0')
+        ->orderBy('PRIORITY')->get();
 
         return view('admin.movie', compact('movie', 'deliveryMovieList'));
     }

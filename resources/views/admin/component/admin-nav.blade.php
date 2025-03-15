@@ -5,6 +5,7 @@
         @if (session('access_id') == '0' || session('access_id') == '1')
             <li><a href="{{ route('admin.information') }}">お知らせ管理</a></li>
             <li><a href="{{ route('admin.movie') }}">配信動画管理</a></li>
+            <li><a href="{{ route('admin.goods') }}">グッズ管理</a></li>
         @endif
 
         <!-- 開発者のみ -->

@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'HP画像管理')
+@section('title', 'グッズ管理')
 
 @section('content')
-    <h2>HP画像登録</h2>
-
-    <div class="data-form-container">
-        <h3>新規画像アップロード</h3>
-        <form action="{{ route('admin.photo.store') }}" method="POST" enctype="multipart/form-data" class="data-form">
+    <h2>グッズ登録</h2>
+    <p>※最大５つまで登録できます。</p>
+    {{-- <div class="data-form-container">
+        <h3>グッズ登録</h3>
+        <form action="{{ route('admin.goods.store') }}" method="POST" enctype="multipart/form-data" class="data-form">
             @csrf
             <div class="form-group">
                 <label for="IMAGE">画像ファイル<span class="required">*</span></label>
@@ -43,45 +43,33 @@
                 <button type="submit" class="submit-btn">アップロード</button>
             </div>
         </form>
-    </div>
+    </div> --}}
 
     <div class="data-list-container">
-        <h3>アップロード済み画像一覧</h3>
+        <h3>グッズ一覧</h3>
         <div class="data-table-wrapper">
             <table class="data-table">
                 <thead>
                     <tr>
                         <th>操作</th>
-                        <th>ファイル名</th>
-                        <th>プレビュー</th>
-                        <th>表示先</th>
-                        <th>タイトル</th>
-                        <th>優先度</th>
-                        <th>アップロード日時</th>
+                        <th>公開フラグ</th>
+                        <th>画像</th>
+                        <th>グッズのリンク</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($photos as $photo)
+                    @foreach($goods as $info)
                         <tr>
                             <td>
-                                <button type="button" class="edit-btn" data-id="{{ $photo->IMAGE_ID }}"
-                                        data-title="{{ htmlspecialchars($photo->ALT, ENT_QUOTES, 'UTF-8') }}"
-                                        data-view-flg="{{ $photo->VIEW_FLG }}"
-                                        data-priority="{{ $photo->PRIORITY ?? '' }}"
-                                        data-image-src="{{ asset($photo->FILE_PATH . $photo->FILE_NAME) }}">編集</button>
-                                <form action="{{ route('admin.photo.delete') }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="hidden" name="IMAGE_ID" value="{{$photo->IMAGE_ID}}">
-                                    <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？')">削除</button>
-                                </form>
+                                <button type="button" class="edit-btn" data-id="{{ $info->IMAGE_ID }}"
+                                        data-title="{{ htmlspecialchars($info->ALT, ENT_QUOTES, 'UTF-8') }}"
+                                        data-url="{{ $info->URL }}"
+                                        data-public-flg="{{ $info->PUBLIC_FLG }}"
+                                        data-image-src="{{ asset($info->FILE_PATH . $info->FILE_NAME) }}">編集</button>
                             </td>
-                            <td>{{ $photo->FILE_NAME }}</td>
-                            <td><img src="{{ asset( $photo->FILE_PATH . $photo->FILE_NAME) }}" alt="{{ $photo->ALT }}" style="max-width: 100px; max-height: 100px;"></td>
-                            <td>{{ $photo->V_COMMENT }}</td>
-                            <td>{{ $photo->ALT }}</td>
-                            <td>{{ $photo->PRIORITY }}</td>
-                            <td>{{ $photo->INS_DATE}}</td>
+                            <td>{{ $info->PUBLIC_FLG ? '公開' : '非公開' }}</td>
+                            <td><img src="{{ asset( $info->FILE_PATH . $info->FILE_NAME) }}" alt="{{ $info->ALT }}" style="max-width: 100px; max-height: 100px;"></td>
+                            <td>{!! nl2br($info->URL) !!}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -94,7 +82,7 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h3>画像編集</h3>
-            <form action="{{ route('admin.photo.update') }}" method="POST" class="data-form">
+            <form action="{{ route('admin.goods.update') }}" enctype="multipart/form-data" method="POST" class="data-form">
                 @csrf
                 @method('PUT')
                 <input type="hidden" id="edit_IMAGE_ID" name="IMAGE_ID">
@@ -105,22 +93,32 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_COMMENT">タイトル<span class="required">*</span></label>
-                    <input type="text" id="edit_COMMENT" name="COMMENT" required>
+                    <label for="IMAGE">画像ファイル<span class="required"></span></label>
+                    <div class="file-upload-container">
+                        <div class="file-upload-area" id="dropArea">
+                            <p>ここにファイルをドラッグ＆ドロップするか</p>
+                            <div class="file-upload-button" id="fileSelectButton">ファイルを選択</div>
+                        </div>
+                        <input type="file" id="IMAGE" name="IMAGE[]" accept="image/*"  class="file-upload-input">
+                        <div class="file-preview-container" id="filePreviewContainer"></div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_VIEW_FLG">表示先<span class="required">*</span></label>
-                    <select name="VIEW_FLG" id="edit_VIEW_FLG" required>
-                        @foreach ($viewFlg as $select)
-                        <option value="{{ $select['VIEW_FLG'] }}">
-                            {{ $select['COMMENT'] }}
-                        </option>
-                        @endforeach
-                    </select>
+                    <label for="SPATE2">公開フラグ</label>
+                    <div class="radio-area">
+                        <label>
+                            <input type="radio" name="SPARE2" value="1" checked>
+                            公開
+                        </label>
+                        <label>
+                            <input type="radio" name="SPARE2" value="0">
+                            非公開
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_PRIORITY">優先度</label>
-                    <input type="number" id="edit_PRIORITY" name="PRIORITY">
+                    <label for="edit_SPARE1">グッズのリンク<span class="required">*</span></label>
+                    <input type="text" id="edit_SPARE1" name="SPARE1" required>
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="submit-btn">更新</button>
@@ -251,24 +249,20 @@
                     e.stopPropagation();
 
                     const id = this.getAttribute('data-id');
-                    const title = this.getAttribute('data-title');
-                    const viewFlg = this.getAttribute('data-view-flg');
-                    const priority = this.getAttribute('data-priority');
+                    const url = this.getAttribute('data-url');
+                    const publicFlg = this.getAttribute('data-public-flg');
                     const imageSrc = this.getAttribute('data-image-src');
 
                     // デバッグ情報をコンソールに出力
                     console.log('編集ボタンがクリックされました');
                     console.log('ID:', id);
-                    console.log('タイトル:', title);
-                    console.log('表示先:', viewFlg);
-                    console.log('優先度:', priority);
+                    console.log('リンク:', url);
                     console.log('画像URL:', imageSrc);
 
                     // フォームに値を設定
                     document.getElementById('edit_IMAGE_ID').value = id;
-                    document.getElementById('edit_COMMENT').value = title;
-                    document.getElementById('edit_VIEW_FLG').value = viewFlg;
-                    document.getElementById('edit_PRIORITY').value = priority;
+                    document.getElementById('edit_SPARE1').value = url;
+                    document.querySelector(`input[name="SPARE2"][value="${publicFlg}"]`).checked = true;
                     document.getElementById('edit_preview').src = imageSrc;
 
                     // モーダルを表示

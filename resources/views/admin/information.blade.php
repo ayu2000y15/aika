@@ -52,24 +52,18 @@
             <table class="data-table">
                 <thead>
                     <tr>
+                        <th>操作</th>
                         <th>優先度</th>
                         <th>ID</th>
                         <th>投稿日</th>
                         <th>タイトル</th>
                         <th>内容</th>
                         <th>公開フラグ</th>
-                        <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($information as $info)
                         <tr>
-                            <td>{{ $info->PRIORITY }}</td>
-                            <td>{{ $info->INFORMATION_ID }}</td>
-                            <td>{{ $info->POST_DATE }}</td>
-                            <td>{{ $info->TITLE }}</td>
-                            <td>{!! nl2br(e($info->CONTENT)) !!}</td>
-                            <td>{{ $info->PUBLIC_FLG ? '公開' : '非公開' }}</td>
                             <td>
                                 <button class="edit-btn" data-id="{{ $info->INFORMATION_ID }}"
                                         data-post-date="{{ $info->POST_DATE }}"
@@ -84,6 +78,12 @@
                                     <button type="submit" class="delete-btn" onclick="return confirm('本当に削除しますか？');">削除</button>
                                 </form>
                             </td>
+                            <td>{{ $info->PRIORITY }}</td>
+                            <td>{{ $info->INFORMATION_ID }}</td>
+                            <td>{{ $info->POST_DATE }}</td>
+                            <td>{{ $info->TITLE }}</td>
+                            <td>{!! nl2br($info->CONTENT) !!}</td>
+                            <td>{{ $info->PUBLIC_FLG ? '公開' : '非公開' }}</td>
                         </tr>
                     @endforeach
                 </tbody>

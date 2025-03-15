@@ -113,7 +113,7 @@
                         <div class="title">{{ $info->TITLE }}</div>
                     </div>
                     <div class="down">
-                        <div class="content">{!! nl2br(e($info->CONTENT)) !!}</div>
+                        <div class="content">{!! nl2br($info->CONTENT) !!}</div>
                     </div>
                 </div>
             @endforeach

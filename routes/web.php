@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPhotoController;
+use App\Http\Controllers\Admin\AdminGoodsController;
 use App\Http\Controllers\Admin\AdminInformationController;
 use App\Http\Controllers\Admin\AdminMovieController;
 use App\Http\Controllers\Admin\AdminDefinitionController;
@@ -35,6 +36,10 @@ Route::delete('/admin/information/delete', [AdminInformationController::class, '
 Route::get('/admin/movie', [AdminMovieController::class, 'index'])->name('admin.movie');
 Route::post('/admin/movie/store', [AdminMovieController::class, 'store'])->name('admin.movie.store');
 Route::post('/admin/movie/', [AdminMovieController::class, 'update'])->name('admin.movie.update');
+
+//グッズ管理
+Route::get('/admin/goods', [AdminGoodsController::class, 'index'])->name('admin.goods');
+Route::put('/admin/goods/update', [AdminGoodsController::class, 'update'])->name('admin.goods.update');
 
 //画像管理
 Route::get('/admin/photo', [AdminPhotoController::class, 'index'])->name('admin.photo');
