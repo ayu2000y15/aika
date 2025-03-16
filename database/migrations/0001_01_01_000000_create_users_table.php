@@ -40,6 +40,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->char('access_id');
+            $table->dateTime('last_access')->default(now());
             $table->rememberToken();
             $table->timestamps();
 

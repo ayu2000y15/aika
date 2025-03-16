@@ -69,6 +69,10 @@
                             </td>
                             <td>{{ $info->PUBLIC_FLG ? '公開' : '非公開' }}</td>
                             <td><img src="{{ asset( $info->FILE_PATH . $info->FILE_NAME) }}" alt="{{ $info->ALT }}" style="max-width: 100px; max-height: 100px;"></td>
+                            @php
+                            $convert = new App\Services\PlanetextToUrl;
+                            $info->URL = $convert->convertLink($info->URL);
+                            @endphp
                             <td>{!! nl2br($info->URL) !!}</td>
                         </tr>
                     @endforeach

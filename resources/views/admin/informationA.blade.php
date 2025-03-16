@@ -1,16 +1,18 @@
 @extends('layouts.admin')
 
-@section('title', 'お知らせ管理')
+@section('title', 'お知らせ管理(管理者用)')
 
 @section('content')
-    <h2>お知らせ登録</h2>
+    <h2>お知らせ登録(管理者用)</h2>
     <button type="button" class="new-entry-btn" id="newEntryBtn">新規登録</button>
     <div class="data-form-container" id="dataForm" style="display: none;">
-        <h3>お知らせ登録・更新</h3>
-        <form action="{{ route('admin.information.store') }}" method="POST" class="data-form">
+        <h3>お知らせ(管理者用)登録・更新</h3>
+        <form action="{{ route('admin.informationA.store') }}" method="POST" class="data-form">
             @csrf
             <button type="button" class="cancel-btn" id="cancelBtn"></button>
             <input type="hidden" name="INFORMATION_ID" id="INFORMATION_ID">
+            <input type="hidden" name="SPARE1" id="SPARE1" value="1">
+
             <div class="form-group">
                 <label for="POST_DATE">投稿日<span class="required">*</span></label>
                 <input type="date" id="POST_DATE" name="POST_DATE" required>
@@ -47,7 +49,7 @@
     </div>
 
     <div class="data-list-container">
-        <h3>登録済みデータ一覧</h3>
+        <h3>登録済みデータ一覧(管理者用)</h3>
         <div class="data-table-wrapper">
             <table class="data-table">
                 <thead>
@@ -71,7 +73,7 @@
                                         data-content="{{ $info->CONTENT }}"
                                         data-public-flg="{{ $info->PUBLIC_FLG }}"
                                         data-priority="{{ $info->PRIORITY }}">編集</button>
-                                <form action="{{ route('admin.information.delete') }}" method="POST" style="display:inline;">
+                                <form action="{{ route('admin.informationA.delete') }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <input type="hidden" name="INFORMATION_ID" value="{{ $info->INFORMATION_ID }}">
@@ -134,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('PRIORITY').value = priority;
 
             submitBtn.textContent = '更新';
-            form.action = "{{ route('admin.information.update') }}";
+            form.action = "{{ route('admin.informationA.update') }}";
 
             showForm();
         });
@@ -150,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('PRIORITY').value = '';
 
         submitBtn.textContent = '登録';
-        form.action = "{{ route('admin.information.store') }}";
+        form.action = "{{ route('admin.informationA.store') }}";
     }
 
     function showForm() {
@@ -163,13 +165,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function today() {
-        var today = new Date();
-        today.setDate(today.getDate());
-        var yyyy = today.getFullYear();
-        var mm = ("0"+(today.getMonth()+1)).slice(-2);
-        var dd = ("0"+today.getDate()).slice(-2);
-        document.getElementById("POST_DATE").value=yyyy+'-'+mm+'-'+dd;
+    var today = new Date();
+    today.setDate(today.getDate());
+    var yyyy = today.getFullYear();
+    var mm = ("0"+(today.getMonth()+1)).slice(-2);
+    var dd = ("0"+today.getDate()).slice(-2);
+    document.getElementById("POST_DATE").value=yyyy+'-'+mm+'-'+dd;
     }
+
 
 });
 </script>

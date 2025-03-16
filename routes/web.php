@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminGoodsController;
 use App\Http\Controllers\Admin\AdminInformationController;
+use App\Http\Controllers\Admin\AdminInformationAController;
 use App\Http\Controllers\Admin\AdminMovieController;
 use App\Http\Controllers\Admin\AdminDefinitionController;
 
@@ -24,13 +25,19 @@ Route::post('/login/access', [AdminController::class, 'loginAccess'])->name('log
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 // 管理者ページ
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [AdminController::class, 'dashboards'])->name('admin');
 
 //お知らせ管理
 Route::get('/admin/information', [AdminInformationController::class, 'index'])->name('admin.information');
 Route::post('/admin/information/store', [AdminInformationController::class, 'store'])->name('admin.information.store');
 Route::post('/admin/information/update', [AdminInformationController::class, 'update'])->name('admin.information.update');
 Route::delete('/admin/information/delete', [AdminInformationController::class, 'delete'])->name('admin.information.delete');
+
+//お知らせ管理(管理者用)
+Route::get('/admin/informationA', [AdminInformationAController::class, 'index'])->name('admin.informationA');
+Route::post('/admin/informationA/store', [AdminInformationAController::class, 'store'])->name('admin.informationA.store');
+Route::post('/admin/informationA/update', [AdminInformationAController::class, 'update'])->name('admin.informationA.update');
+Route::delete('/admin/informationA/delete', [AdminInformationAController::class, 'delete'])->name('admin.informationA.delete');
 
 //配信動画管理
 Route::get('/admin/movie', [AdminMovieController::class, 'index'])->name('admin.movie');

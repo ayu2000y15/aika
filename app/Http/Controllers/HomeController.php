@@ -60,14 +60,11 @@ class HomeController extends Controller
         $contactTitle = Image::where('VIEW_FLG', 'TOP_title_contact')->active()->first();
         $guidelineTitle = Image::where('VIEW_FLG', 'TOP_title_guideline')->active()->first();
 
-        $information = Information::where('PUBLIC_FLG', '1')->active()
-        ->orderByRaw('PRIORITY is null')
-        ->orderByRaw('PRIORITY = 0')
-        ->orderBy('PRIORITY')->get();
-
-        foreach($information as $info){
-            $info->CONTENT = $this->convert->convertLink($info->CONTENT);
-        }
+        $information = Information::where('PUBLIC_FLG', '1')
+        ->whereRaw('SPARE1 is null')
+        ->orderBy('PRIORITY')
+        ->orderByDesc('INFORMATION_ID')
+        ->get();
 
         return view('home', compact('backImg'
         ,'logoImg'

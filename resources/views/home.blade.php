@@ -105,7 +105,12 @@
         <!-- お知らせ -->
         <div class="index" id="information">
             <img src="{{ asset($infoTitle->FILE_PATH . $infoTitle->FILE_NAME) }}" alt="{{ $infoTitle->COMMENT }}" >
-
+            @php
+            $convert = new App\Services\PlanetextToUrl;
+            foreach($information as $info){
+                $info->CONTENT = $convert->convertLink($info->CONTENT);
+            }
+            @endphp
             @foreach ($information as $info)
                 <div class="article">
                     <div class="top">
