@@ -18,7 +18,7 @@
             <p class="widget-value">42</p>
         </div>
     </div> --}}
-    <div class="recent-activity">
+    <div class="data-form-container">
         <h3>管理者からのお知らせ <span class="last-access">最終アクセス日時：{{ session('last_access')}}</span></h3>
         @foreach ($information as $info)
             @if(date('Y/m/d H:i:s', strtotime(session('last_access'))) >= date('Y/m/d H:i:s', strtotime($info->INS_DATE)))

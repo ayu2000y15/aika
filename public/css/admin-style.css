@@ -124,33 +124,6 @@ h2 {
     margin-top: 10px;
     font-size: 0.8rem;
 }
-.recent-activity {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-.recent-activity h3 {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.3em;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f0f0f0;
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.recent-activity h3::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 80px;
-    height: 2px;
-    background-color: #007bff;
-}
 
 /* お知らせエリアのスタイル */
 .admin-info-area {
